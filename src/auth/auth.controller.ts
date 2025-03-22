@@ -9,7 +9,7 @@ import { ResetPasswordDto } from './dto/reset-password.dto';
 import { GoogleAuthDto } from './dto/google-auth.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-@ApiTags('Auth')  // Agrupa las rutas en Swagger
+@ApiTags('Auth')  
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
