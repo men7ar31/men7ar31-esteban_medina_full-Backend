@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from '../schemas/user.schema';
 import { EmailService } from '../email/email.service';
-import * as crypto from 'crypto';  // Importamos la librería crypto
+import * as crypto from 'crypto';  
 
 @Injectable()
 export class AuthService {
@@ -36,7 +36,7 @@ export class AuthService {
     return { access_token: token };
   }
 
-  // Enviar el correo con el código de recuperación
+  
   async forgotPassword(email: string) {
     const user = await this.userModel.findOne({ email });
 
@@ -44,17 +44,17 @@ export class AuthService {
       throw new Error('No se encontró un usuario con ese correo');
     }
 
-    // Generar un código aleatorio
+    
     const resetToken = crypto.randomBytes(3).toString('hex');
     const resetTokenExpiration = new Date();
-    resetTokenExpiration.setHours(resetTokenExpiration.getHours() + 1); // El código expira en 1 hora
+    resetTokenExpiration.setHours(resetTokenExpiration.getHours() + 1); 
 
-    // Almacenar el token y la expiración en la base de datos
+    
     user.resetToken = resetToken;
     user.resetTokenExpiration = resetTokenExpiration;
     await user.save();
 
-    // Enviar el correo con el código
+    
     await this.emailService.sendEmail(
       email,
       'Recuperación de Contraseña',
@@ -66,7 +66,7 @@ export class AuthService {
     return { message: 'Email enviado con código de recuperación' };
   }
 
-  // Verificar el código de recuperación y permitir cambiar la contraseña
+  
   async resetPassword(email: string, resetToken: string, newPassword: string) {
     const user = await this.userModel.findOne({ email });
 
@@ -78,13 +78,13 @@ export class AuthService {
       throw new Error('El código de recuperación es inválido o ha expirado');
     }
   
-    // Encriptar la nueva contraseña
+    
     const hashedPassword = await bcrypt.hash(newPassword, 10);
   
-    // Actualizar la contraseña en la base de datos
+    
     user.password = hashedPassword;
-    user.resetToken = null; // Limpiar el token de recuperación
-    user.resetTokenExpiration = null; // Limpiar la fecha de expiración
+    user.resetToken = null; 
+    user.resetTokenExpiration = null; 
     await user.save();
   
     return { message: 'Contraseña actualizada exitosamente' };

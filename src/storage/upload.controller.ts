@@ -9,7 +9,7 @@ import {
   import { RenameFileDto } from './dto/rename-file.dto';
   import { FileResponseDto } from './dto/file-response.dto';
   
-  @ApiTags('Storage')  // Categoría en Swagger
+  @ApiTags('Storage')
   @Controller('upload')
   export class UploadController {
     constructor(private readonly storageService: StorageService) {}

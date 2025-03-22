@@ -59,7 +59,7 @@ export class AuthController {
   }
 
   @Post('forgot-password')
-  @ApiBody({ type: ForgotPasswordDto })  // Utiliza el DTO
+  @ApiBody({ type: ForgotPasswordDto })  
   @ApiResponse({ status: 200, description: 'Correo de recuperación enviado' })
   @ApiResponse({ status: 400, description: 'Correo no encontrado' })
   async forgotPassword(@Body() body: ForgotPasswordDto) {

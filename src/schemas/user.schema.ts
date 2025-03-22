@@ -12,10 +12,10 @@ export class User {
   password: string;
 
   @Prop({ type: String, default: null })
-  resetToken: string | null; // Token de recuperación, puede ser string o null
+  resetToken: string | null; 
 
   @Prop({ type: Date, default: null })
-  resetTokenExpiration: Date | null; // Expiración del token, puede ser Date o null
+  resetTokenExpiration: Date | null; 
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

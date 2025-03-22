@@ -10,7 +10,7 @@ export class SearchImagesDto {
 
   @ApiProperty({ example: 10, description: 'Cantidad de imágenes por página', required: false })
   @IsOptional()
-  @Type(() => Number) // Convierte el parámetro a número
+  @Type(() => Number) 
   @IsInt()
   @Min(1)
   perPage?: number = 10;
