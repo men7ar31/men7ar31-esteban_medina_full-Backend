@@ -149,12 +149,6 @@ Después de iniciar el servidor, accede a la documentación interactiva en:
 
 ---
 
-## 🚀 Despliegue
-Puedes desplegar la API en **Vercel**, **Render**, **Railway**, **AWS Lambda**, o con **Docker** en un VPS.  
-Si usas **Docker**, asegúrate de configurar `.env` correctamente.
-
----
-
 ## 👤 Contacto
 
 - **Autor:** Esteban Nicolás Medina
