@@ -38,7 +38,7 @@ export class UnsplashService {
   
     try {
       const response = await firstValueFrom(this.httpService.get(url));
-      return response.data.urls.full; // Retorna la URL de la imagen
+      return response.data.urls.full; 
     } catch (error) {
       throw new Error('Error al obtener imagen de Unsplash');
     }

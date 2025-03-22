@@ -16,12 +16,12 @@ import { EmailService } from '../email/email.service';
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     PassportModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET || 'secretKey', // Debe ser igual al de jwt.strategy.ts
-      signOptions: { expiresIn: '1h' }, // Token válido por 1 hora
+      secret: process.env.JWT_SECRET || 'secretKey', 
+      signOptions: { expiresIn: '1h' }, 
     }),
   ],
   controllers: [AuthController],
   exports: [EmailService],
-  providers: [AuthService, JwtStrategy, GoogleStrategy, EmailService], // ¡Importante!
+  providers: [AuthService, JwtStrategy, GoogleStrategy, EmailService], 
 })
 export class AuthModule {}

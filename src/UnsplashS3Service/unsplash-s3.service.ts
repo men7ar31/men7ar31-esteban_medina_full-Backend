@@ -10,10 +10,10 @@ export class UnsplashS3Service {
   ) {}
 
   async fetchAndUploadImage(query: string) {
-    // Obtener URL de la imagen desde Unsplash
+  
     const imageUrl = await this.unsplashService.getRandomImageUrl(query);
 
-    // Subir la imagen a S3
+  
     return await this.storageService.uploadUnsplashImage(imageUrl);
   }
 }

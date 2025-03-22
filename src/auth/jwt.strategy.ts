@@ -7,9 +7,9 @@ import { Request } from 'express';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Extrae el token del header Authorization
-      ignoreExpiration: false, // Rechaza tokens expirados
-      secretOrKey: process.env.JWT_SECRET || 'secretKey', // Usa la misma clave con la que firmas el token
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), 
+      ignoreExpiration: false, 
+      secretOrKey: process.env.JWT_SECRET || 'secretKey', 
     });
   }
 

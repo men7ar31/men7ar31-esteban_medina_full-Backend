@@ -3,7 +3,7 @@ import { UnsplashService } from './unsplash.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { SearchImagesDto } from './dto/search-images.dto';
 
-@ApiTags('Unsplash') // Categoría en Swagger
+@ApiTags('Unsplash') 
 @Controller('unsplash')
 export class UnsplashController {
   constructor(private readonly unsplashService: UnsplashService) {}

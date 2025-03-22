@@ -15,9 +15,9 @@ export class StorageService {
     const bucketName = this.configService.get<string>('AWS_S3_BUCKET_NAME');
     const region = this.configService.get<string>('AWS_REGION');
   
-    console.log('AWS Access Key:', accessKeyId); // Log de prueba
-    console.log('AWS Secret Key:', secretAccessKey); // Log de prueba
-    console.log('AWS Region:', region); // Log de prueba
+    console.log('AWS Access Key:', accessKeyId); 
+    console.log('AWS Secret Key:', secretAccessKey); 
+    console.log('AWS Region:', region); 
   
     if (!accessKeyId || !secretAccessKey || !bucketName || !region) {
       throw new Error('AWS credentials, bucket name or region are missing from environment variables');
@@ -58,14 +58,14 @@ export class StorageService {
 
   async renameFile(oldName: string, newName: string): Promise<any> {
     try {
-      // Copiar el archivo con el nuevo nombre
+      
       await this.s3.send(new CopyObjectCommand({
         Bucket: this.bucketName,
         CopySource: `${this.bucketName}/${encodeURIComponent(oldName)}`,
         Key: newName,
       }));
   
-      // Eliminar el archivo antiguo después de copiarlo
+      
       await this.s3.send(new DeleteObjectCommand({
         Bucket: this.bucketName,
         Key: oldName,
@@ -80,14 +80,14 @@ export class StorageService {
   
   async uploadUnsplashImage(imageUrl: string) {
     try {
-      // Descargar la imagen desde Unsplash
+     
       const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
       const buffer = Buffer.from(response.data, 'binary');
   
-      // Generar un nombre de archivo único
+      
       const fileName = `unsplash/${uuidv4()}.jpg`;
   
-      // Parámetros para subir a S3
+      
       const params = {
         Bucket: this.bucketName,
         Key: fileName,
@@ -95,7 +95,7 @@ export class StorageService {
         ContentType: 'image/jpeg',
       };
   
-      // Subir el archivo a S3
+      
       await this.s3.send(new PutObjectCommand(params));
   
       return {
